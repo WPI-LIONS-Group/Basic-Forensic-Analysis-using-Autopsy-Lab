@@ -21,9 +21,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Uncompress src/image_zero.tar.gz
+        run: |
+          tar -xvf src/image_zero.tar.gz
+          rm src/image_zero.tar.gz
+
       - name: Create ISO from from Repository
         run: |
-          dd if=/dev/zero of=${{ github.event.repository.name }}.iso bs=512 count=200000
+          dd if=/dev/zero of=${{ github.event.repository.name }}.iso bs=512 count=1171875
           mkisofs -o ${{ github.event.repository.name }}.iso src/
 
       - name: Create Release
