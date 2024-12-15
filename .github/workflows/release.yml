@@ -23,7 +23,7 @@ jobs:
 
       - name: Uncompress src/image_zero.tar.gz
         run: |
-          tar -xvf src/image_zero.tar.gz
+          tar -xvf src/image_zero.tar.gz -C src/
           rm src/image_zero.tar.gz
 
       - name: Create ISO from from Repository
